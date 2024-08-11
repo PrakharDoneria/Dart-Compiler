@@ -117,10 +117,11 @@ async function handler(req: Request): Promise<Response> {
   }
 }
 
-Deno.cron("Daily cleanup job at 12:00 IST", "30 6 * * *", async () => {
+Deno.cron("30 6 * * *", async () => {
   console.log("Running scheduled cleanup job...");
   await cleanUpExpiredEntries();
 });
+
 
 console.log("Server running on http://localhost:8000");
 serve(handler);
