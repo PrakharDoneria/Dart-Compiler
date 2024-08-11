@@ -84,7 +84,7 @@ async function handler(req: Request): Promise<Response> {
       }
 
       const { code, timestamp } = entry.value;
-      await cleanUpExpiredEntries(entryKey, timestamp);
+      await cleanUpExpiredEntries();
 
       const updatedEntry = await kv.get(entryKey);
 
@@ -117,11 +117,10 @@ async function handler(req: Request): Promise<Response> {
   }
 }
 
-Deno.cron("30 6 * * *", async () => {
+Deno.cron("Daily cleanup job", "30 6 * * *", async () => {
   console.log("Running scheduled cleanup job...");
   await cleanUpExpiredEntries();
 });
-
 
 console.log("Server running on http://localhost:8000");
 serve(handler);
