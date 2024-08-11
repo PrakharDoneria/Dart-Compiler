@@ -3,7 +3,7 @@
     "lib": ["deno.ns"]
   },
   "tasks": {
-    "start": "deno run --allow-net --allow-read --allow-write --allow-env server.ts"
+    "start": "deno run --allow-net --allow-read --allow-write --allow-env index.ts"
   },
   "importMap": "import_map.json"
 }
